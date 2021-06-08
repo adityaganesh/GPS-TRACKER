@@ -1,0 +1,227 @@
+#:kivy 2.0
+BoxLayout:
+    orientation:'vertical'
+    MDToolbar:
+        title: "VEICHLE GPS TRACKER"
+        md_bg_color:app.theme_cls.primary_color
+    MDBottomNavigation:
+        MDBottomNavigationItem:
+            
+            text:"Instrutions"
+            name:"inst"
+            icon:"account-card-details-outline"
+            
+            BoxLayout:
+                padding:[20,0,0,0]
+                id: box
+                orientation: "vertical"
+               
+        MDBottomNavigationItem:
+            text:"GPS DATA"
+
+            icon:"plus"
+            MDBoxLayout:
+                orientation: 'vertical'
+                spacing:5
+            #padding:[0,100]
+                ScreenManager:
+                    id:screen_manager
+                    ConfigScreen:
+
+    
+    
+
+<ConfigScreen>:
+    name: 'device'
+    # MDBottomAppBar:
+    #     md_bg_color:  app.theme_cls.accent_color
+    #     MDToolbar:
+    #         title: "ASRA Configurator"
+    #         icon: "content-save"
+    #         type: "bottom"
+    #         mode: "end"
+    #         on_action_button: app.ac_setup_save()        
+
+        
+    MDBoxLayout:
+        orientation: 'vertical'
+        #spacing:10
+        #padding:[0,100]
+        size:root.width,root.height
+        MDBoxLayout:
+            orientation: 'horizontal'
+            #spacing: '20'
+            
+            MDLabel:
+                id:lat_data
+                line_color: 0, 0, 1, 1
+                mode: "fill"    
+                
+            
+                #pos_hint: {"x": 0,"top":0.9}
+
+                #pos_hint: { "center_y": .5}
+            MDLabel:
+                id:lon_data
+                line_color: 0, 0, 1, 1
+                mode: "fill"    
+              
+        MDBoxLayout:
+            orientation: 'horizontal'
+            #spacing: '20'    
+            #pos_hint: {"x": 0,"top":0.85}
+            MDLabel:
+                id:speed_data
+                line_color: 0, 0, 1, 1
+                mode: "fill"    
+                
+            
+            # pos_hint: {"x": 0,"top":0.7}
+                #pos_hint: {"center_x": 0.5, "center_y": 0.6}
+            MDLabel:
+                id:alt_data
+                line_color: 0, 0, 1, 1
+                mode: "fill"   
+        MapView:
+            id:MAP
+            lat:19.031402
+            lon:72.927845
+            zoom:20
+            MapMarkerPopup:
+                source:"marker1.png"
+                lat:19.031402
+                lon:72.927845      
+           
+           # pos_hint: {"x": 0,"top":0.6}
+            #pos_hint: {"center_x": 0.5, "center_y": 0.6}
+        # MDCard:
+                
+        #     orientation: 'vertical'
+        #     #padding: "8dp"
+        #     #size_hint: None, None
+        #     #size: "200dp", "200dp"
+        #     size_hint_x: .2
+        #     size_hint_y: .1
+        #     pos_hint: {"x": 0,"top":0.5}
+        #     MDLabel:
+                
+        #         text: "PIR"
+
+        #         size_hint: None, None
+
+        #         theme_text_color: "Custom"
+        #         text_color: 0, 0, 1, 1
+        #         height: self.texture_size[1]
+        #     MDSeparator:
+        #         height: "1dp"
+        # MDSwitch:
+            
+        #     on_active: app.pir_control(*args)
+        # MDRectangleFlatIconButton:
+        #     text: 'AC LEARNING MODE'
+        #     icon: 'brain'
+        #     size_hint_x: .3
+        #     text_color: 0, 0, 1, 1
+        #     on_press: app.ac_learn()
+        #     pos_hint: {"x": 0.3,"top":0.5}
+        # MDRectangleFlatIconButton:
+        #     text: 'AC SETUP'
+        #     icon: 'file-settings-variant-outline'
+        #     size_hint_x: .3
+        #     text_color: 0, 0, 1, 1
+        #     on_press: app.ac_setup()
+        #     pos_hint: {"x": 0.65,"top":0.5}
+        # MDFloatingActionButton:
+        #     icon: 'content-save'
+        #     size_hint_x: .3
+        #     md_bg_color: app.theme_cls.primary_color
+        #     on_touch_down: app.ac_setup_save()           
+        #     pos_hint: {"x": 0.3,"top":0.4}
+        # MDRoundFlatIconButton:
+        #     text: 'Restart Device'
+        #     icon: 'restart'
+        #     size_hint_x: .3
+        #     pos_hint: {"x": 0.65,"top":0.4}
+        #     text_color: 1, 0, 0, 1
+        #     on_press: app.ac_restart()
+        # MDLabel:
+        #     id:d_data
+        #     line_color: 0, 0, 1, 1
+            
+        #     halign: "center"
+        # MDLabel:
+        #     id:v_data
+        #     line_color: 0, 0, 1, 1
+                
+              
+        #     halign: "center"
+        # MDBoxLayout:
+        #     orientation:'horizontal'
+        #     spacing:30
+        #     MDCard:
+                
+        #         orientation: 'vertical'
+        #         padding: "8dp"
+        #         size_hint: None, None
+        #         size: "200dp", "200dp"
+        #         #size_hint_x: .8
+            
+        #         MDLabel:
+                
+        #             text: "PIR"
+                   
+        #             size_hint: None, None
+                    
+        #             theme_text_color: "Custom"
+        #             text_color: 0, 0, 1, 1
+        #             height: self.texture_size[1]
+        #         MDSeparator:
+        #             height: "1dp"
+        #         MDSwitch:
+                    
+        #             on_active: app.pir_control(*args)
+        #     MDBoxLayout:
+        #         orientation: 'vertical'
+        #         spacing:50
+        #         #size_hint_x: .8
+            
+        #         MDRectangleFlatIconButton:
+        #             text: 'AC LEARNING MODE'
+        #             icon: 'brain'
+        #             #size_hint_x: .3
+        #             text_color: 0, 0, 1, 1
+        #             on_press: app.ac_learn()
+        #         MDRectangleFlatIconButton:
+        #             text: 'AC SETUP'
+        #             icon: 'file-settings-variant-outline'
+        #             #size_hint_x: .25
+        #             text_color: 0, 0, 1, 1
+        #             on_press: app.ac_setup()
+        #         MDFloatingActionButton:
+        #             icon: 'content-save'
+        #             #size_hint_x: .25
+        #             md_bg_color: app.theme_cls.primary_color
+        #             on_touch_down: app.ac_setup_save()           
+        
+        #         MDRoundFlatIconButton:
+        #             text: 'Restart Device'
+        #             icon: 'restart'
+                
+        #             text_color: 1, 0, 0, 1
+        #             on_press: app.ac_restart()
+        # MDBoxLayout:
+        #     orientation : 'horizontal'
+        #     spacing:10
+        #     MDLabel:
+        #         id:d_data
+        #         line_color: 0, 0, 1, 1
+               
+        #         halign: "center"
+        #     MDLabel:
+        #         id:v_data
+        #         line_color: 0, 0, 1, 1
+                
+              
+        #        halign: "center"
+
+
