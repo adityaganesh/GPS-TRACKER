@@ -63,15 +63,9 @@ class DemoApp(MDApp):
         )
         for name_theme in [
 
-            "1. Switch ON the wifi before switching on the application",
-            "2. Enter the correct MACID of device and , Protocol and Model for AC in the field",
-            "3. On bottom left of screen protocol recieved by the device will be printed",
-            "4. On bottom right of screen version of the device will be printed",
-            "5. Their are 4 buttons on right hand side",
-            "   1. For putting the device in learning mode",
-            "   2. This button will only set the given protocol and model in the device",
-            "   3. This will set and save the protocol and model in the device",
-            "   4. This will restart the device",
+            "1. Switch ON the wifi before switching on the device",
+            "2. On upper half of screen you will get different specifications about the devices location",
+            "3. On bottom half of screen map will be centered on current devices location will be printed",
         ]:
             self.root.ids.box.add_widget(
                 MDLabel(
@@ -217,13 +211,17 @@ class DemoApp(MDApp):
 
             if (topic == "dubblin/location"):
 
-                latitude = str(data['LAT'])
-                longitude = str(data['LON'])
+                latitude = float(data['LAT'])
+                longitude = float(data['LON'])
                 speed = str(data['SPEED'])
                 altitude = str(data['ALT'])
                 if(latitude != "NO DATA"):
                     marker = MapMarkerPopup(
-                        source="marker1.png", lat=latitude, lon=longitude)
+                        source="marker.png", lat=latitude, lon=longitude)
+                    #addwindow_instance.ids.MAP.lat = latitude
+                    #addwindow_instance.ids.MAP.lon = longitude
+                    addwindow_instance.ids.MAP.center_on(latitude, longitude)
+                    #addwindow_instance.ids.MAP.zoom = 20
                     addwindow_instance.ids.MAP.add_widget(marker)
 
                 addwindow_instance.ids.lat_data.text = f'CURRENT LATITUDE OF VEICHLE :{latitude}'
